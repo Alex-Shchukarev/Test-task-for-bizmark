@@ -5,7 +5,5 @@ const folder = {
 }
 
 export function getAvatar(fio) {
-    console.log(fio)
-    console.log(folder[fio])
     return `../assets/avatar/${folder[fio]}`
 }
