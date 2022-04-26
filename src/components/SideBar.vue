@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <div class="header">Captain</div>
+        <div class="sidebar-header">Captain</div>
         <div class="burger"></div>
         <ul class="main-menu">
             <li class="menu-item"><img src="../assets/Home.png">Дашборд</li>

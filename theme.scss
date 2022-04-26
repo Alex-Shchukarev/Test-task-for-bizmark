@@ -43,15 +43,17 @@ body {
     height: 1080px;
     left: 0px;
     top: 0px;
-    padding-left: 2rem;
     background-color: $oneColor;
-    .header {
+    .sidebar-header {
         position: absolute;
-        width: 89px;
-        height: 34px;
-        left: 15px;
-        top: 19px;
-        font-size: 1.5rem;
+        width: 79px;
+        height: 29px;
+        left: 25px;
+        top: 24px;
+        font-size: 20px;
+        font-family: 'Noto Serif TC';
+        font-weight: bold;
+
     }
     .burger {
         position: absolute;
@@ -73,6 +75,8 @@ body {
             padding-left: 15px;
             display: flex;
             align-items: center;
+            font-size: 14px;
+            font-weight: 500;
             img {
                 margin-right: 8px;
             }
@@ -87,6 +91,8 @@ body {
             width: 100%;
             height: 40px;
             padding-left: 15px;
+            display: flex;
+            align-items: center;
             a {
                 text-decoration: none;
                 color: #333333;
@@ -202,7 +208,7 @@ body {
     margin-right: 15px;
     background-color: $oneColor;
     border-radius: 10px 10px 0px 0px;
-    .header {
+    .column-header {
         height: 50px;
         display: flex;
         justify-content: space-between;
@@ -227,8 +233,47 @@ body {
             border-radius: 10px;
             background-color: #fff;
             box-shadow: 0 2px 4px 0 rgba(21, 27, 38, 0.2);
-            .header {
-                
+            .task-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                .task-header-container {
+                    width: 200px;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+                .check {
+                    margin-right: 5px;
+                }
+            }
+            .task-footer {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                .task-footer-left {
+                    display: flex;
+                    .avatar {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                    }
+                    
+                    .task-time {
+                        font-size: 12px;
+                        line-height: 15px;
+                        font-weight: 500;
+                        color: #B7B9BB;
+                        width: 100px;
+                    }
+                }
+                .task-icons {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                }
             }
         }
     }
@@ -243,7 +288,6 @@ body {
 .column-title {
     outline: none;
     border: none;
-    //border: solid 1px #f2f2f2;
 }
 
 .modal {

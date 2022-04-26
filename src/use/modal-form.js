@@ -6,6 +6,7 @@ export function useModalForm(fn) {
     const {handleSubmit, isSubmitting } = useForm({ initialValues: { fio: 'petrovpp' } })
 
     const MIN_LENGTH = 5
+    const MIN_DATE = new Date(new Date().getTime() + 24 * 3600 * 1000)
     const {value: title, errorMessage: errorTitle, handleBlur: hbTitle} = useField('title', 
         yup.string().trim().required('Это обязательное поле').min(MIN_LENGTH, `Минимальная длина ${MIN_LENGTH} символов`))
 
@@ -13,8 +14,7 @@ export function useModalForm(fn) {
         yup.number().required('Это обязательное поле').min(1, `Минимальное время 1 час`))
 
     const {value: deadline, errorMessage: errorDeadline, handleBlur: hbDeadline} = useField('deadline', 
-        yup.date().required('Это обязательное поле')
-        .date.min(new Date(new Date().getTime() + 24 * 3600 * 1000), `Минимальная дата 1 день`))
+        yup.date().min(MIN_DATE, `Минимальная дата 1 день`).required('Это обязательное поле'))
 
     const {value: fio} = useField('fio')
 

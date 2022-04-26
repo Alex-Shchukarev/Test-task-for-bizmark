@@ -10,26 +10,11 @@
             <input type="number" id="phone" v-model="timer" @blur="nbTimer"/>
             <small v-if="errorTimer"> {{ errorTimer }} </small>
         </div>
-        <div :class="['form-control', { invalid: errorDaedline }]">
-            <label for="date">Выполнить до:</label>
-            <input type="date" id="date" v-model="deadline" @blur="nbDeadline"/>
+        <div :class="['form-control', { invalid: errorDeadline }]">
+            <label for="deadline">Выполнить до:</label>
+            <input type="date" id="deadline" v-model="deadline" @blur="nbDeadline"/>
             <small v-if="errorDeadline"> {{ errorDeadline }} </small>
         </div>
-        <!-- <div :class="['form-control', { invalid: errorFio }]">
-            <label for="fio">FIO</label>
-            <input type="text" id="fio" v-model="fullName" @blur="hbFio"/>
-            <small v-if="errorFio"> {{ errorFio }} </small>
-        </div> -->
-        <!-- <div :class="['form-control', { invalid: errorPhone }]">
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" v-model="phone" @blur="nbPhone"/>
-            <small v-if="errorPhone"> {{ errorPhone }} </small>
-        </div>
-        <div :class="['form-control', { invalid: errorSum }]">
-            <label for="summa">Summa</label>
-            <input type="number" id="summa" v-model.number="sum" @blur="hbSum"/>
-            <small v-if="errorSum"> {{ errorSum }} </small>
-        </div> -->
         <div class="form-control">
             <label for="fio">Ответственный</label>
             <select id="fio" v-model="fio">
@@ -47,10 +32,12 @@ import { useStore } from 'vuex'
 import { useModalForm } from '../../use/modal-form'
 export default {
     emits: ['created'],
-    setup(_, {emit}) {
+    props: ['column'],
+    setup(props, {emit}) {
         const store = useStore()
-        const submit = values => {
-            store.dispatch('addTask', values)
+        const submit = async values => {
+            const payload = { column: props.column, values}
+            await store.dispatch('addTask', payload)
             emit('created')
         }
         return { ...useModalForm(submit) }
